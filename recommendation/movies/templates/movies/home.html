@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Template</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #1a1919;
+            
+        }
+
+        h1 {
+            color: #f4e6e6;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #dfd2d2;
+        }
+        h3{
+            color: #dfd2d2;
+        }
+        label{
+            color: #dfd2d2;
+            padding-top: 2%      }
+        
+    </style>
+</head>
+<body>
+
+<h1 style="background-color: rgb(216, 30, 30); color: white;">Movie Recommender Paradise</h1>
+<div style=" padding-top: 2%">
+<form method="get" action="">
+    <label for="title">Select your movie wish...</label><div></div>
+    <select   name="title" id="title">
+        <!-- <option value="" {% if not selected_title %}selected{% endif %}>Movies</option> -->
+        {% for title in titles_list %}
+            <option value="{{ title }}" {% if selected_title == title %}selected{% endif %}>{{ title }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+</form>
+</div>
+{% if selected_title %}
+    <h2 style="padding-top: 2%;"> {{ selected_title }}</h2>
+{% else %}
+    <h2>Unleash Your Cinephile Spirit: </h2>
+{% endif %}
+{% if mv %}
+<h1 style="padding-top: 3%;">You might also like.........</h1>
+{% for i in mv %}
+
+<h3 style="padding-top: 2%;">{{i}}</h3>
+{% endfor %}
+{% endif %}
+</body>
+</html>
